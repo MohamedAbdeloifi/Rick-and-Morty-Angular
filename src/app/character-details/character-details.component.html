@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="episode-details" *ngIf="(character$ | async) as character">
+    <h1>{{character.name}}</h1>
+    <img [src]="character.image" alt="photo" class="img-thumbnail">
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Species</th>
+          <th scope="col">Status</th>
+          <th scope="col">Origin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{character.id}}</th>
+          <td>{{character.gender}}</td>
+          <td>{{character.species}}</td>
+          <td>{{character.status}}</td>
+          <td>{{character.origin.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <div class="episodes" *ngIf="(character.episode | async) as episodes">
+      <h3>Number of played episodes : {{ character.episodesCount }}</h3>
+      <table class="table table-dark table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Season</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let episode of episodes">
+          <tr>
+            <th scope="row">{{ episode.id }}</th>
+            <td>
+              <a [routerLink]="['/episodes',episode.id]">{{ episode.name }}</a>
+            </td>
+            <td>{{ episode.air_date }}</td>
+            <td>{{ episode.episode }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,8 @@
+.home-post img {
+  /* height: 350px; */
+  max-height: 350px;
+}
+
+.carousel img{
+  width: 100%;
+}
